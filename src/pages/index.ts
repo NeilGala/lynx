@@ -3,6 +3,7 @@
  * Centralized export for all page components
  */
 
+export { HomePage } from './Home';
 export { SearchPage } from './Search';
 export { ProfilePage } from './Profile';
 export { RequestsPage } from './Requests';

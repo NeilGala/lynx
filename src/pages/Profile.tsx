@@ -66,9 +66,10 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
     console.log('Archive experience:', id);
   };
 
-  const userExperiences = MOCK_EXPERIENCES.filter(
-    e => isViewOnly ? e.userId === user.id : e.userId === MOCK_USER.id
-  );
+  // Show more experiences for the current user's profile
+  const userExperiences = isViewOnly 
+    ? MOCK_EXPERIENCES.filter(e => e.userId === user.id)
+    : MOCK_EXPERIENCES.slice(0, 8); // Show 8 experiences for own profile
 
   return (
     <div className="animate-in fade-in duration-500">

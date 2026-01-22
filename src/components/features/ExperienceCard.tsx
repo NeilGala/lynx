@@ -4,6 +4,7 @@
  */
 
 import React, { useState } from 'react';
+import { Heart } from 'lucide-react';
 import { Experience } from '../../types';
 import { ICONS } from '../../constants/icons';
 import { Avatar, Badge } from '../ui';
@@ -15,6 +16,7 @@ interface ExperienceCardProps {
   onDelete?: (id: string) => void;
   onArchive?: (id: string) => void;
   onAvatarClick?: (user: any) => void;
+  onFollowToggle?: (experienceId: string, isFollowing: boolean) => void;
 }
 
 export const ExperienceCard: React.FC<ExperienceCardProps> = ({ 
@@ -22,10 +24,12 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
   isOwner = false, 
   onDelete, 
   onArchive, 
-  onAvatarClick 
+  onAvatarClick,
+  onFollowToggle
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const [isFollowing, setIsFollowing] = useState(experience.isFollowing || false);
 
   const handleAvatarClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -37,6 +41,25 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
   const handleMenuAction = (action: () => void) => {
     action();
     setShowMenu(false);
+  };
+
+  /**
+   * Handles follow/unfollow toggle
+   * TODO: Backend Integration - Call API endpoint to update follow status
+   * Endpoint: POST /api/experiences/{experienceId}/follow
+   * Body: { isFollowing: boolean }
+   */
+  const handleFollowToggle = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const newFollowingState = !isFollowing;
+    setIsFollowing(newFollowingState);
+    
+    // TODO: Backend Integration - Replace with actual API call
+    // await experienceService.toggleFollow(experience.id, newFollowingState);
+    
+    if (onFollowToggle) {
+      onFollowToggle(experience.id, newFollowingState);
+    }
   };
 
   return (
@@ -103,9 +126,29 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
 
       {/* Content */}
       <div onClick={() => setIsExpanded(!isExpanded)} className="cursor-pointer">
-        <h3 className="text-lg font-bold mb-2 group-hover:text-white transition-colors">
-          {experience.title}
-        </h3>
+        <div className="flex items-center justify-between mb-2">
+          <h3 className="text-lg font-bold group-hover:text-white transition-colors flex-1">
+            {experience.title}
+          </h3>
+          {!isOwner && (
+            <button
+              onClick={handleFollowToggle}
+              className={`ml-3 p-2 rounded-full transition-all ${
+                isFollowing 
+                  ? 'bg-zinc-800 text-red-400 hover:bg-zinc-700' 
+                  : 'bg-zinc-800/50 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100'
+              }`}
+              aria-label={isFollowing ? 'Unfollow' : 'Follow'}
+              title={isFollowing ? 'Unfollow experience' : 'Follow experience'}
+            >
+              {isFollowing ? (
+                <Heart size={16} fill="currentColor" />
+              ) : (
+                ICONS.Heart
+              )}
+            </button>
+          )}
+        </div>
         
         {isExpanded && (
           <p className="text-zinc-400 text-sm mb-6 leading-relaxed animate-in fade-in slide-in-from-top-1">

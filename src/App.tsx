@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { Layout, AuthScreen } from './components/features';
 import { 
+  HomePage,
   SearchPage, 
   RequestsPage, 
   ChatPage, 
@@ -16,11 +17,11 @@ import {
 } from './pages';
 
 type AppView = 'landing' | 'auth' | 'app';
-type TabId = 'search' | 'requests' | 'chats' | 'leaderboard' | 'profile' | 'notifications';
+type TabId = 'home' | 'search' | 'requests' | 'chats' | 'leaderboard' | 'profile' | 'notifications';
 
 export default function App() {
   const [view, setView] = useState<AppView>('landing');
-  const [activeTab, setActiveTab] = useState<TabId>('search');
+  const [activeTab, setActiveTab] = useState<TabId>('home');
   const [viewingUser, setViewingUser] = useState<any>(null);
 
   /**
@@ -40,6 +41,21 @@ export default function App() {
   };
 
   /**
+   * Handles sign out - navigates to auth screen (phone number)
+   * TODO: Backend Integration - Clear authentication tokens and session
+   * Endpoint: POST /api/auth/logout
+   */
+  const handleSignOut = () => {
+    // TODO: Backend Integration - Clear auth tokens from storage
+    // await authService.logout();
+    // localStorage.removeItem('authToken');
+    
+    setView('auth');
+    setActiveTab('home');
+    setViewingUser(null);
+  };
+
+  /**
    * Renders the appropriate content based on active tab
    */
   const renderContent = () => {
@@ -50,6 +66,8 @@ export default function App() {
 
     // Render page based on active tab
     switch (activeTab) {
+      case 'home':
+        return <HomePage onUserClick={handleUserClick} />;
       case 'search':
         return <SearchPage onUserClick={handleUserClick} />;
       case 'requests':
@@ -63,7 +81,7 @@ export default function App() {
       case 'notifications':
         return <NotificationsPage />;
       default:
-        return <SearchPage onUserClick={handleUserClick} />;
+        return <HomePage onUserClick={handleUserClick} />;
     }
   };
 
@@ -84,7 +102,7 @@ export default function App() {
 
   // Main App View
   return (
-    <Layout activeTab={activeTab} setActiveTab={handleTabChange}>
+    <Layout activeTab={activeTab} setActiveTab={handleTabChange} onSignOut={handleSignOut}>
       {renderContent()}
     </Layout>
   );

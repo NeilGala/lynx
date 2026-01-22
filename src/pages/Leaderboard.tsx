@@ -16,6 +16,20 @@ const MOCK_LEADERS = [
   { rank: 4, name: 'Elena G.', karma: 5400, helped: 124, badge: 'Guide', avatar: 'https://picsum.photos/seed/l4/200' },
   { rank: 5, name: 'Tarek S.', karma: 4100, helped: 98, badge: 'Pathfinder', avatar: 'https://picsum.photos/seed/l5/200' },
   { rank: 6, name: 'Aisha K.', karma: 3800, helped: 76, badge: 'Pathfinder', avatar: 'https://picsum.photos/seed/l6/200' },
+  { rank: 7, name: 'Jessica Wong', karma: 5600, helped: 201, badge: 'Mentor', avatar: 'https://picsum.photos/seed/jessica/200' },
+  { rank: 8, name: 'Raj Patel', karma: 6800, helped: 234, badge: 'Mentor', avatar: 'https://picsum.photos/seed/raj/200' },
+  { rank: 9, name: 'Tom Hansen', karma: 5400, helped: 178, badge: 'Mentor', avatar: 'https://picsum.photos/seed/tom/200' },
+  { rank: 10, name: 'David Park', karma: 4200, helped: 156, badge: 'Mentor', avatar: 'https://picsum.photos/seed/david/200' },
+  { rank: 11, name: 'Lisa Anderson', karma: 3200, helped: 98, badge: 'Guide', avatar: 'https://picsum.photos/seed/lisa/200' },
+  { rank: 12, name: 'Ahmed Al-Rashid', karma: 3100, helped: 93, badge: 'Guide', avatar: 'https://picsum.photos/seed/ahmed/200' },
+  { rank: 13, name: 'Robert Kim', karma: 2900, helped: 88, badge: 'Guide', avatar: 'https://picsum.photos/seed/robert/200' },
+  { rank: 14, name: 'Emily Tran', karma: 2800, helped: 67, badge: 'Guide', avatar: 'https://picsum.photos/seed/emily/200' },
+  { rank: 15, name: 'Nina Kowalski', karma: 2700, helped: 82, badge: 'Guide', avatar: 'https://picsum.photos/seed/nina/200' },
+  { rank: 16, name: 'Carlos Rodriguez', karma: 2400, helped: 71, badge: 'Guide', avatar: 'https://picsum.photos/seed/carlos/200' },
+  { rank: 17, name: 'Priya Sharma', karma: 2100, helped: 45, badge: 'Guide', avatar: 'https://picsum.photos/seed/priya/200' },
+  { rank: 18, name: 'Michael Chen', karma: 1900, helped: 34, badge: 'Pathfinder', avatar: 'https://picsum.photos/seed/michael/200' },
+  { rank: 19, name: 'Alex Rivera', karma: 1240, helped: 42, badge: 'Guide', avatar: 'https://picsum.photos/seed/arivera/200' },
+  { rank: 20, name: 'Jordan Miller', karma: 890, helped: 28, badge: 'Novice', avatar: 'https://picsum.photos/seed/u4/200' },
 ];
 
 export const LeaderboardPage: React.FC = () => {

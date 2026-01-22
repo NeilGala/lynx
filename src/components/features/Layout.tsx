@@ -13,6 +13,7 @@ interface LayoutProps {
   children: React.ReactNode;
   activeTab: string;
   setActiveTab: (tab: string) => void;
+  onSignOut?: () => void;
 }
 
 interface NavItem {
@@ -22,18 +23,18 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
+  { id: 'home', label: 'Home', icon: ICONS.Home },
   { id: 'search', label: 'Discover', icon: ICONS.Search },
   { id: 'requests', label: 'Requests', icon: ICONS.Zap },
   { id: 'chats', label: 'Chats', icon: ICONS.MessageSquare },
   { id: 'leaderboard', label: 'Leaderboard', icon: ICONS.Trophy },
-  { id: 'notifications', label: 'Alerts', icon: ICONS.Bell },
 ];
 
-export const Layout: React.FC<LayoutProps> = ({ children, activeTab, setActiveTab }) => {
+export const Layout: React.FC<LayoutProps> = ({ children, activeTab, setActiveTab, onSignOut }) => {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
   const handleLogoClick = () => {
-    setActiveTab('search');
+    setActiveTab('home');
   };
 
   const handleProfileMenuClick = (tab: string) => {
@@ -89,6 +90,24 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeTab, setActiveTa
               <span className="text-zinc-100 text-xs font-bold">{formatNumber(currentUser.karma)}</span>
             </div>
 
+            {/* Notifications/Alerts */}
+            <button
+              onClick={() => setActiveTab('notifications')}
+              className={`p-2.5 rounded-full transition-all relative ${
+                activeTab === 'notifications'
+                  ? 'bg-zinc-800 text-white shadow-lg'
+                  : 'text-zinc-500 hover:text-zinc-200 hover:bg-zinc-900'
+              }`}
+              aria-label="Notifications"
+              title="Alerts"
+            >
+              {ICONS.Bell}
+              {/* Notification badge - TODO: Backend Integration - Get unread count from API */}
+              <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center">
+                3
+              </span>
+            </button>
+
             {/* Profile Menu */}
             <div className="relative">
               <button 
@@ -128,8 +147,10 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeTab, setActiveTa
                     <button 
                       className="px-4 py-2.5 text-xs font-bold text-red-400 hover:bg-zinc-800 w-full text-left flex items-center gap-2 transition-colors uppercase tracking-widest"
                       onClick={() => {
-                        // TODO: Implement logout functionality with auth service
-                        console.log('Logout clicked');
+                        setShowProfileMenu(false);
+                        if (onSignOut) {
+                          onSignOut();
+                        }
                       }}
                     >
                       {ICONS.LogOut} Sign Out

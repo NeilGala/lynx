@@ -24,7 +24,9 @@ import {
   MoreVertical, 
   Trash2, 
   Archive, 
-  ChevronDown 
+  ChevronDown,
+  Heart,
+  Home
 } from 'lucide-react';
 
 const DEFAULT_SIZE = 18;
@@ -50,4 +52,6 @@ export const ICONS = {
   Trash2: <Trash2 size={16} />,
   Archive: <Archive size={16} />,
   ChevronDown: <ChevronDown size={DEFAULT_SIZE} />,
+  Heart: <Heart size={DEFAULT_SIZE} />,
+  Home: <Home size={DEFAULT_SIZE} />,
 } as const;

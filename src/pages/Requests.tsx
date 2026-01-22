@@ -14,11 +14,23 @@ type RequestTab = 'received' | 'sent';
 const MOCK_RECEIVED_REQUESTS = [
   { id: 'r1', name: 'Jordan Miller', karma: 240, rank: 'Pathfinder', time: '2h ago', title: MOCK_EXPERIENCES[0].title, msg: "I'm currently at a Series A company and we're seeing massive churn. I saw you navigated a unicorn through a similar growth phase.", avatar: 'https://picsum.photos/seed/u4/200' },
   { id: 'r2', name: 'Elena G.', karma: 5400, rank: 'Guide', time: '5h ago', title: MOCK_EXPERIENCES[0].title, msg: "Working on a side project that needs better technical documentation management.", avatar: 'https://picsum.photos/seed/l4/200' },
+  { id: 'r3', name: 'Kevin Zhang', karma: 1800, rank: 'Pathfinder', time: '1d ago', title: 'Scaling from Seed to Series B', msg: "We're about to close our Series A and I need guidance on building the engineering org.", avatar: 'https://picsum.photos/seed/kevin/200' },
+  { id: 'r4', name: 'Sophia Martinez', karma: 3200, rank: 'Guide', time: '1d ago', title: 'Scaling from Seed to Series B', msg: "Looking to learn about managing technical debt during hypergrowth.", avatar: 'https://picsum.photos/seed/sophia/200' },
+  { id: 'r5', name: 'James Wilson', karma: 890, rank: 'Novice', time: '2d ago', title: 'Scaling from Seed to Series B', msg: "First-time manager here, would love to hear about your experience with hiring.", avatar: 'https://picsum.photos/seed/james/200' },
+  { id: 'r6', name: 'Aisha Patel', karma: 4100, rank: 'Guide', time: '2d ago', title: 'Scaling from Seed to Series B', msg: "Transitioning from IC to EM role, need help with the leadership mindset.", avatar: 'https://picsum.photos/seed/aisha/200' },
+  { id: 'r7', name: 'Lucas Brown', karma: 2600, rank: 'Pathfinder', time: '3d ago', title: 'Scaling from Seed to Series B', msg: "How did you handle oncall and production incidents during rapid scaling?", avatar: 'https://picsum.photos/seed/lucas/200' },
+  { id: 'r8', name: 'Maya Johnson', karma: 1500, rank: 'Pathfinder', time: '4d ago', title: 'Scaling from Seed to Series B', msg: "Would love to discuss compensation structures for growing teams.", avatar: 'https://picsum.photos/seed/maya/200' },
 ];
 
 const MOCK_SENT_REQUESTS = [
   { id: 's1', name: 'Sarah Chen', status: 'Pending', time: '1d ago', title: 'Self-taught to Senior SWE at Stripe', avatar: 'https://picsum.photos/seed/schen/200' },
   { id: 's2', name: 'David V.', status: 'Accepted', time: '3d ago', title: 'Managing Large Teams', avatar: 'https://picsum.photos/seed/l1/200' },
+  { id: 's3', name: 'Emily Tran', status: 'Pending', time: '4d ago', title: 'Breaking into Product Management', avatar: 'https://picsum.photos/seed/emily/200' },
+  { id: 's4', name: 'Raj Patel', status: 'Accepted', time: '5d ago', title: 'Mastering System Design Interviews', avatar: 'https://picsum.photos/seed/raj/200' },
+  { id: 's5', name: 'Jessica Wong', status: 'Pending', time: '1w ago', title: 'Building a Design System from Scratch', avatar: 'https://picsum.photos/seed/jessica/200' },
+  { id: 's6', name: 'David Park', status: 'Declined', time: '1w ago', title: 'Negotiating $300K+ Offers', avatar: 'https://picsum.photos/seed/david/200' },
+  { id: 's7', name: 'Marcus Aurelius', status: 'Accepted', time: '2w ago', title: 'Growth Hacking for SaaS', avatar: 'https://picsum.photos/seed/marcus/200' },
+  { id: 's8', name: 'Lisa Anderson', status: 'Pending', time: '2w ago', title: 'Content Marketing that Actually Converts', avatar: 'https://picsum.photos/seed/lisa/200' },
 ];
 
 export const RequestsPage: React.FC = () => {

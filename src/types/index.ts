@@ -33,6 +33,7 @@ export interface Experience {
   category: string;
   helpedCount: number;
   user?: User;
+  isFollowing?: boolean; // Track if current user is following this experience
 }
 
 export interface Request {
